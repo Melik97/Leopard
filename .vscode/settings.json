@@ -1,0 +1,6 @@
+{
+    "[python]": {
+        "editor.wordWrap": "wordWrapColumn",
+        "editor.wordWrapColumn": 79
+    }
+}

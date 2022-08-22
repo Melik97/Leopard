@@ -9,10 +9,10 @@ class Category(models.Model):
         related_name='sub_categories', 
         null=True,
         blank=True
-        )
+    )
     is_sub = models.BooleanField(default=False)
     name = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=200, unique=True)                                                                      
+    slug = models.SlugField(max_length=200, unique=True)
 
     class Meta:
         ordering = ('name',)
@@ -23,7 +23,10 @@ class Category(models.Model):
         return self.name
 
     def get_absolut_url(self):
-        return reverse('shop:category_filter', args={self.slug})
+        return reverse(
+            'shop:category_filter',
+            args={self.slug}
+        )
 
 
 class Product(models.Model):
@@ -34,8 +37,8 @@ class Product(models.Model):
     description = models.TextField()
     price = models.IntegerField()
     status = models.BooleanField(default=True)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ('name',)
@@ -44,5 +47,7 @@ class Product(models.Model):
         return self.name
 
     def get_absolut_url(self):
-        return reverse('shop:product_detail', args={self.slug, })
-
+        return reverse(
+            'shop:product_detail',
+            args={self.slug, }
+        )
