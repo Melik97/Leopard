@@ -78,22 +78,22 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 class Wallet(models.Model):
     user_id = models.ForeignKey(
-        User, 
-        on_delete=models.CASCADE, 
+        User,
+        on_delete=models.CASCADE,
         null=True,
         blank=True,
     )
     wallet_balance = models.IntegerField(
-        default=0, 
-        null=False, 
+        default=0,
+        null=False,
         blank=False,
     )
 
 
 class Cart(models.Model):
     user_id = models.ForeignKey(
-        User, 
-        on_delete=models.CASCADE, 
+        User,
+        on_delete=models.CASCADE,
         null=True,
         blank=True,
     )
@@ -104,21 +104,21 @@ class Cart(models.Model):
 
 class Shop(models.Model):
     seller_id = models.ForeignKey(
-        User, 
-        on_delete=models.CASCADE, 
+        User,
+        on_delete=models.CASCADE,
         null=True,
         blank=True,
     )
     name = models.CharField(
-        default=False, 
-        null=False, 
+        default=False,
+        null=False,
         blank=False,
         max_length=150,
     )
     shop_id = models.IntegerField(
-        default=False, 
-        null=False, 
-        blank=False, 
+        default=False,
+        null=False,
+        blank=False,
         unique=True
     )
     logo = models.ImageField(
