@@ -10,7 +10,7 @@ class CustomerAdmin(BaseUserAdmin):
     list_filter = ('is_admin',)
     fieldsets = (
         ('Main', {'fields': ('full_name', 'email', 'phone_number', 'password')}),
-        ('Personal info', {'fields': ('is_active',)}),
+        ('Personal info', {'fields': ('is_active', 'is_seller')}),
         ('Permissions', {'fields': ('is_admin',)}),
     )
     add_fieldsets = (

@@ -29,11 +29,22 @@ class Category(models.Model):
         )
 
 
+def get_avilable_category():
+    category = [(c.id, c.name) for c in Category.objects.all()]
+    return category
+
+
 class Product(models.Model):
-    category = models.ManyToManyField(Category, related_name='products')
+    category = models.ForeignKey(
+        Category, 
+        blank=False, 
+        null=False,
+        related_name='products', 
+        on_delete=models.CASCADE
+        )
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200)
-    image = models.ImageField(upload_to='products/%Y/%b/%d/')
+    image = models.ImageField(upload_to='seller/products/%Y/%b/%d/')
     description = models.TextField()
     price = models.IntegerField()
     status = models.BooleanField(default=True)
@@ -46,6 +57,10 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def category_name(self):
+        return self.category.name
+        
     def get_absolut_url(self):
         return reverse(
             'shop:product_detail',
