@@ -11,12 +11,12 @@ router = DefaultRouter()
 router.register(
     r'register/users',
     RegisterUserViewSet,
-    basename="users"
+    basename="register-users"
     )
 router.register(
     r'register/sellers',
     RegisterSellerViewSet,
-    basename="sellers"
+    basename="register-sellers"
     )
 router.register(
     r'register/seller/<int:pk>/shops',
