@@ -4,9 +4,9 @@ from django.urls import reverse
 
 class Category(models.Model):
     sub_category = models.ForeignKey(
-        'self', 
-        on_delete=models.CASCADE, 
-        related_name='sub_categories', 
+        'self',
+        on_delete=models.CASCADE,
+        related_name='sub_categories',
         null=True,
         blank=True
     )
@@ -29,17 +29,12 @@ class Category(models.Model):
         )
 
 
-def get_avilable_category():
-    category = [(c.id, c.name) for c in Category.objects.all()]
-    return category
-
-
 class Product(models.Model):
     category = models.ForeignKey(
-        Category, 
-        blank=False, 
+        Category,
+        blank=False,
         null=False,
-        related_name='products', 
+        related_name='products',
         on_delete=models.CASCADE
         )
     name = models.CharField(max_length=200)
