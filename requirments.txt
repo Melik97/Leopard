@@ -1,0 +1,8 @@
+django
+rest_framework
+djangorestframework
+markdown
+django-filter
+djangorestframework-simplejwt
+pillow
+

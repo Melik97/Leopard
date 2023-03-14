@@ -95,7 +95,7 @@ class CategoryAPIView(viewsets.ViewSet):
         serializer = CategorySerializer(queryset)
         return Response(serializer.data)
 
-     # if data['name] is None you must use category data
+    # if data['name] is None you must use category data
     def update(self, request, pk=None):
         data = request.data
         queryset = Category.objects.all()

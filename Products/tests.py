@@ -24,4 +24,3 @@ class testCreateCategories(APITestCase):
         sample_test = {'title': "Heloo", "desc": "ok"}
         response = self.client.post(reverse('categories'), sample_test)
         self.assertEquals(response.status_code, status.HTTP_401_UNAUTHORIZED)
-
